@@ -1,0 +1,45 @@
+#!/bin/bash
+scriptname=${0##*/}
+scriptdir=${0%/*}
+
+function hetc {
+echo -e \\nHit ENTER to continue...
+read
+}
+
+function ctrl_c() {
+:
+}
+
+until shmenu 123456789qQ $scriptdir/$scriptname.menu; do
+case "$?" in
+1) docker logs --tail 50 radiosonde_auto_rx;
+hetc;;
+2) trap ctrl_c INT;
+docker logs --tail 50 --follow radiosonde_auto_rx;
+trap - INT;
+hetc;;
+3) docker restart radiosonde_auto_rx;
+hetc;;
+4) docker stop radiosonde_auto_rx;
+hetc;;
+5) #pull latest
+docker pull ghcr.io/projecthorus/radiosonde_auto_rx:latest;
+#stop
+docker stop radiosonde_auto_rx || true;
+docker rm radiosonde_auto_rx || true;
+docker run -d --name radiosonde_auto_rx --restart="always" --device=/dev/bus/usb --network=host \
+  -v ~/radiosonde_auto_rx/station.cfg:/opt/auto_rx/station.cfg:ro \
+  -v ~/radiosonde_auto_rx/log/:/opt/auto_rx/log/ ghcr.io/projecthorus/radiosonde_auto_rx:latest;
+docker restart radiosonde_auto_rx;
+hetc;;
+7) mc ~/radiosonde_auto_rx;;
+8) less ~/radiosonde_auto_rx/station.cfg;;
+9) if [ -z $EDITOR ]; then echo "Error: \$EDITOR unset / empty";hetc
+else $EDITOR ~/radiosonde_auto_rx/station.cfg;fi;;
+1[01]) break;;
+255) echo "got noopt_exit";;
+*) echo rc is $?; echo got wild;;
+esac
+
+done

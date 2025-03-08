@@ -1,0 +1,25 @@
+
+Radiosonde utility menu
+=======================
+
+   1. logs (docker logs --tail 50 radiosonde_auto_rx)
+
+   2. logs --follow (docker logs --tail 50 --follow radiosonde_auto_rx)
+
+   3. restart (docker restart radiosonde_auto_rx)
+
+   4. stop (docker stop radiosonde_auto_rx)
+
+   5. update radiosonde_auto_rx 
+
+   6. 
+
+   7. mc ~/radiosonde_auto_rx
+
+   8. browse config file (less ~/radiosonde_auto_rx/station.cfg) 
+
+   9. edit config file ($EDITOR ~/radiosonde_auto_rx/station.cfg) 
+
+ ESC. Quit
+
+
