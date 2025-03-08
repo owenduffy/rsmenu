@@ -7,9 +7,10 @@ This utility uses a text mode terminal, so access by a SSH terminal session
 or a terminal windows if running under a GUI.
 
 This utility uses [shmenu](https://github.com/owenduffy/shmenu/releases). For a
-RPi, download and install the latest armhf version.
+RPi, download and install the latest armhf version. (Hint: sudo apt install \<package file name>.)
 
-(Hint: sudo apt install \<package file name>.)
+rsmenu also depends on libncurses5 or libncurses6 which may not be already
+installed. If not download and install the latest armhf version: sudo apt-get install libncurses6.
 
 I use a dedicated user radiosonde for radiosonde-auto-rx, and the bulk of
 radiosonde-auto-rx is installed in subdirectory /home/radiosonde/radiosonde-auto-rx.
