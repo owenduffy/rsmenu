@@ -16,3 +16,14 @@ I use a dedicated user radiosonde for radiosonde-auto-rx, and the bulk of
 radiosonde-auto-rx is installed in subdirectory /home/radiosonde/radiosonde-auto-rx.
 The files below are installed in the user’s root directory.
 
+## EDITOR
+
+The script uses the environment variable EDITOR. If it is not set sensibly then:
+
+- find the path to your preferred editor, eg whereis nano
+- at the end of ~/.profile, add this line (modified to suit your own editor)
+
+export EDITOR=/usr/bin/nano
+
+Log off and login again to test it.
+
