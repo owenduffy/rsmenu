@@ -16,6 +16,20 @@ I use a dedicated user radiosonde for radiosonde-auto-rx, and the bulk of
 radiosonde-auto-rx is installed in subdirectory /home/radiosonde/radiosonde-auto-rx.
 The files below are installed in the user’s root directory.
 
+## Installation
+
+### get the rsmenu zip and expand it in the current directory
+
+wget -O rsmenu.zip https://github.com/owenduffy/rsmenu/archive/refs/heads/main.zip
+
+unzip rsmenu.zip
+
+mv rsmenu-main/rs* .
+
+rm rsmenu-main/*
+
+rmdir rsmenu-main
+
 ## EDITOR
 
 The script uses the environment variable EDITOR. If it is not set sensibly then:
