@@ -38,6 +38,10 @@ hetc;;
 9) if [ -z $EDITOR ]; then echo "Error: \$EDITOR unset / empty";hetc
 else $EDITOR ~/radiosonde_auto_rx/station.cfg;fi;;
 1[01]) break;;
+127) echo;
+echo "Missing shmenu, please install (https://github.com/owenduffy/shmenu).";
+hetc;
+exit;;
 255) echo "got noopt_exit";;
 *) echo rc is $?; echo got wild;;
 esac
